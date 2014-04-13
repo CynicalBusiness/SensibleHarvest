@@ -7,7 +7,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -27,7 +26,6 @@ public class CropGrowthHandler implements Listener{
 	public CropGrowthHandler(SensibleHarvest plugin){
 		this.plugin = plugin;
 	}
-		
 	
 	@EventHandler
 	public void onAnimalGrowth(CreatureSpawnEvent e){
@@ -302,8 +300,7 @@ public class CropGrowthHandler implements Listener{
 	
 	@EventHandler
 	public void onFish(PlayerFishEvent e){
-		Player p = e.getPlayer();
-		Biome b = p.getLocation().getBlock().getBiome();
+		Biome b = e.getHook().getLocation().getBlock().getBiome();
 		if (plugin.isOfBiomeType("OCEAN", b) || plugin.isOfBiomeType("RIVER", b)){
 			if (e.getState()==State.CAUGHT_FISH){
 				if (e.getCaught().getType()==EntityType.DROPPED_ITEM){
@@ -312,6 +309,10 @@ public class CropGrowthHandler implements Listener{
 						e.setCancelled(true);
 					}
 				}
+			}
+		} else {
+			if (e.getState()==State.CAUGHT_FISH){
+				e.setCancelled(true);
 			}
 		}
 	}

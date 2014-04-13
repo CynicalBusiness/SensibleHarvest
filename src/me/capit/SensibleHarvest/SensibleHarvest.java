@@ -15,6 +15,7 @@ public class SensibleHarvest extends JavaPlugin {
 	@Override
 	public void onEnable(){
 		cgh = new CropGrowthHandler(this);
+		this.getServer().getPluginManager().registerEvents(cgh, this);
 		
 		bialias.put("DESERT", Arrays.asList(Biome.DESERT, Biome.DESERT_HILLS, Biome.DESERT_MOUNTAINS));
 		bialias.put("PLAINS", Arrays.asList(Biome.PLAINS, Biome.SAVANNA, Biome.SAVANNA_MOUNTAINS, Biome.SAVANNA_PLATEAU, Biome.SAVANNA_PLATEAU_MOUNTAINS,
