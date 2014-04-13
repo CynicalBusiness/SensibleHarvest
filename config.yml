@@ -1,0 +1,8 @@
+# I plan in the future to make the crops rates fully configurable. For now, they're not.
+# For the time being, just head to http://goo.gl/rZ7Yy6 for more information on crop growth.
+config:
+  global:
+    RATE: 0.25
+  greenhouse:
+    ENABLED: true
+    RATE: 0.15
